@@ -22,12 +22,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         primaryColor: Colors.blueAccent,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         cardColor: Colors.blueGrey,
-         
+         fontFamily: 'Lato',
         useMaterial3: true,
       ),
-      home: MainPage(),
+      home: const MainPage(),
     ),
     );
   }

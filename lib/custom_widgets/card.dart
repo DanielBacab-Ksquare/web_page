@@ -44,7 +44,6 @@ class InfoCard extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 16,
                   color: Colors.white,
-                  fontFamily: 'Nunito-Sans',
                 ))),
         collapsed: const SizedBox(),
         expanded: 
