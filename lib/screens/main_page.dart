@@ -4,11 +4,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:web_page/controllers/appbar_provider.dart';
+import 'package:web_page/controllers/expandable_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:web_page/custom_widgets/card.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -25,6 +25,7 @@ class _MainPageState extends State<MainPage> {
   final GlobalKey social = GlobalKey();
 
   late AppbarProvider appbarProvider;
+  late ExpandableProvider expandableProvider;
   Future<void>? initializeVideoPlayerFuture;
   double screenHeight = 100;
   double screenWidth = 200;
@@ -72,6 +73,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     appbarProvider = Provider.of<AppbarProvider>(context);
+    expandableProvider = Provider.of<ExpandableProvider>(context);
     screenHeight = MediaQuery.of(context).size.height;
     screenWidth = MediaQuery.of(context).size.width;
 
@@ -92,11 +94,6 @@ class _MainPageState extends State<MainPage> {
         curve: Curves.easeInOutCirc,
         child: Scaffold(
           body: Stack(children: [
-            SpinKitCircle(
-              duration: const Duration(milliseconds: 1500),
-              color: const Color(0xff61f7d5),
-              size: screenWidth * .3,
-            ),
             Scrollbar(
               interactive: true,
               thickness: screenWidth * .01,
@@ -105,16 +102,12 @@ class _MainPageState extends State<MainPage> {
               controller: scrollController,
               child: CustomScrollView(
                 controller: scrollController,
-                physics: const NeverScrollableScrollPhysics(),
                 slivers: <Widget>[
                   //Appbar
-
                   SliverAppBar(
                     pinned: true,
                     backgroundColor: appbarProvider.sliverAppBarColor,
                     expandedHeight: screenHeight,
-                    snap: true,
-                    floating: true,
                     flexibleSpace: LayoutBuilder(
                       builder:
                           (BuildContext context, BoxConstraints constraints) {
@@ -306,17 +299,24 @@ class _MainPageState extends State<MainPage> {
                     ],
                   ),
 
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
                   //sections 1
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
 
                   SliverToBoxAdapter(
                     key: about,
                     child: Container(
                       height: screenHeight,
-                      color: const Color.fromARGB(255, 0, 20, 153),
-                      padding:
-                          EdgeInsets.symmetric(vertical: screenHeight * .06),
+                      color: const Color(0xff0b192f),
                       alignment: Alignment.center,
                       child: Container(
+                        height: screenHeight * .8,
                         decoration: const BoxDecoration(
                           border: Border(
                             top: BorderSide(width: 10.0, color: Colors.grey),
@@ -333,7 +333,7 @@ class _MainPageState extends State<MainPage> {
                         ),
                         padding: EdgeInsets.symmetric(
                             horizontal: screenWidth * .1,
-                            vertical: screenHeight * .1),
+                            vertical: screenHeight * .05),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -387,23 +387,47 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
 
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
                   //section 2
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
 
                   SliverToBoxAdapter(
                     key: experience,
                     child: Container(
-                      height: screenHeight * 2.7,
-                      color: Color.fromARGB(255, 0, 17, 124),
+                      decoration: const BoxDecoration(
+                        color:  Color(0xff0b192f),
+                        image: DecorationImage
+                        (image:  AssetImage(
+                                      'images/back1.jpg'),
+                        fit: BoxFit.cover,
+                        )
+                      ),
+                      height: screenHeight +
+                          expandableProvider
+                              .currentSection1Offset, 
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: screenWidth * .1,
                             vertical: screenHeight * .05),
                         child: Column(children: [
+                          Text("Experience",
+                              style: TextStyle(
+                                  color: const Color(0xff61f7d5),
+                                  fontSize: titles)),
                           InfoCard(
                             title:
                                 "Mechatronics Engineering | Facultad de ingeniería | December 2016 - December 2021",
                             classification: "Education",
                             classificationColor: Colors.lightBlue,
+                            section: 0,
+                            index: 0,
+                            expandableProvider: expandableProvider,
                             childWidget: RichText(
                               text: const TextSpan(
                                 children: [
@@ -460,6 +484,9 @@ class _MainPageState extends State<MainPage> {
                             title: "QE Bootcamp | Accenture | May 2022",
                             classification: "Bootcamp",
                             classificationColor: Colors.lightGreen,
+                            section: 0,
+                            index: 1,
+                            expandableProvider: expandableProvider,
                             childWidget: RichText(
                               text: const TextSpan(
                                 children: [
@@ -579,6 +606,9 @@ class _MainPageState extends State<MainPage> {
                                 "Software Engineering Certification Course | Instituto Tecnologico Ksquare | September 2022 - March 2023",
                             classification: "Course",
                             classificationColor: Colors.orange,
+                            section: 0,
+                            index: 2,
+                            expandableProvider: expandableProvider,
                             childWidget: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -671,22 +701,45 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
 
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
                   //sections 3
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
 
                   SliverToBoxAdapter(
                     key: projects,
                     child: Container(
-                      height: screenHeight * 6.5,
-                      color: Color.fromARGB(255, 0, 9, 65),
+                      height: screenHeight +
+                          expandableProvider.currentSection2Offset,
+                      decoration: const BoxDecoration(
+                       color: Color(0xff0b192f),
+                        image: DecorationImage
+                        (image:  AssetImage(
+                                      'images/back2.jpg'),
+                        fit: BoxFit.cover,
+                        )
+                      ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: screenWidth * .1,
                             vertical: screenHeight * .05),
                         child: Column(children: [
+                          Text("Projects",
+                              style: TextStyle(
+                                  color: const Color(0xff53D8BA),
+                                  fontSize: titles)),
                           InfoCard(
                             title: "Simon's Game",
                             classification: "video game",
                             classificationColor: const Color(0xffc53ace),
+                            section: 2,
+                            index: 0,
+                            expandableProvider: expandableProvider,
                             childWidget: Column(
                               children: [
                                 Image.network(
@@ -717,10 +770,9 @@ class _MainPageState extends State<MainPage> {
                                   ),
                                 ),
                                 InkWell(
-                                  onTap: (){
-                                  _openURL(
-                                                  "https://rodrigogarcia-ksquare.github.io/project1_simon/");
-
+                                  onTap: () {
+                                    _openURL(
+                                        "https://rodrigogarcia-ksquare.github.io/project1_simon/");
                                   },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -751,28 +803,33 @@ class _MainPageState extends State<MainPage> {
                             title: "Conway's Game of Life",
                             classification: "video game",
                             classificationColor: Color(0xffc53ace),
+                            section: 2,
+                            index: 1,
+                            expandableProvider: expandableProvider,
                             childWidget: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.network(
                                     "https://i.imgur.com/P0uxGY8.png"),
                                 InkWell(
-                                  onTap: (){
-                                     _openURL(
-                                                  "https://github.com/ArgenisGonzalez-Ksquare/project2_conway");
+                                  onTap: () {
+                                    _openURL(
+                                        "https://github.com/ArgenisGonzalez-Ksquare/project2_conway");
                                   },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                       Icon(Icons.remove_red_eye_outlined,
-                                            size: screenHeight * .08,
-                                            color: const Color(0xff61f7d5)),
+                                      Icon(Icons.remove_red_eye_outlined,
+                                          size: screenHeight * .08,
+                                          color: const Color(0xff61f7d5)),
                                       RichText(
                                         text: TextSpan(
-                                          text: 'Click here to see the repository',
+                                          text:
+                                              'Click here to see the repository',
                                           style: TextStyle(
                                               color: Colors.white,
-                                              decoration: TextDecoration.underline,
+                                              decoration:
+                                                  TextDecoration.underline,
                                               fontSize: text),
                                         ),
                                       ),
@@ -780,9 +837,9 @@ class _MainPageState extends State<MainPage> {
                                   ),
                                 ),
                                 InkWell(
-                                  onTap: (){
-                                            _openURL(
-                                                  "https://argenisgonzalez-ksquare.github.io/project2_conway/");
+                                  onTap: () {
+                                    _openURL(
+                                        "https://argenisgonzalez-ksquare.github.io/project2_conway/");
                                   },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -795,9 +852,9 @@ class _MainPageState extends State<MainPage> {
                                           text: 'Click here to play',
                                           style: TextStyle(
                                               color: Colors.white,
-                                              decoration: TextDecoration.underline,
+                                              decoration:
+                                                  TextDecoration.underline,
                                               fontSize: text),
-                                          
                                         ),
                                       ),
                                     ],
@@ -813,6 +870,9 @@ class _MainPageState extends State<MainPage> {
                             title: "TV Series App",
                             classification: "Mobile App",
                             classificationColor: Color(0xff31b8f7),
+                            section: 2,
+                            index: 2,
+                            expandableProvider: expandableProvider,
                             childWidget: Column(children: [
                               SizedBox(
                                 width: screenWidth * .75,
@@ -826,24 +886,25 @@ class _MainPageState extends State<MainPage> {
                                 ),
                               ),
                               InkWell(
-                                onTap: (){
-                                   _openURL(
-                                                "https://github.com/EstrellaPoot-Ksquare/tv_series_project");
+                                onTap: () {
+                                  _openURL(
+                                      "https://github.com/EstrellaPoot-Ksquare/tv_series_project");
                                 },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(Icons.remove_red_eye_outlined,
-                                            size: screenHeight * .08,
-                                            color: const Color(0xff61f7d5)),
+                                        size: screenHeight * .08,
+                                        color: const Color(0xff61f7d5)),
                                     RichText(
                                       text: TextSpan(
-                                        text: 'Click here to see the repository',
+                                        text:
+                                            'Click here to see the repository',
                                         style: TextStyle(
                                             color: Colors.white,
-                                            decoration: TextDecoration.underline,
+                                            decoration:
+                                                TextDecoration.underline,
                                             fontSize: text),
-                                        
                                       ),
                                     ),
                                   ],
@@ -858,6 +919,9 @@ class _MainPageState extends State<MainPage> {
                             title: "Synkron",
                             classification: "Mobile App",
                             classificationColor: const Color(0xff31b8f7),
+                            section: 2,
+                            index: 3,
+                            expandableProvider: expandableProvider,
                             childWidget: Column(children: [
                               GestureDetector(
                                   behavior: HitTestBehavior.translucent,
@@ -878,7 +942,16 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
 
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
                   //Social
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+                  /***************************************************************************************************/
+
                   SliverToBoxAdapter(
                     key: social,
                     child: Container(

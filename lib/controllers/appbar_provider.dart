@@ -7,12 +7,15 @@ class AppbarProvider extends ChangeNotifier {
   Color sliverAppBarColor = Color.fromRGBO(100, 100, 100, 1);
   int colorOffset = 0;
 
+
+
   void newColor(int a, int b, int c) {
     if (a < 0) a = 0;
     if (b < 0) b = 0;
     if (c < 0) c = 0;
     sliverAppBarColor = Color.fromRGBO(a, b, c, 1);
-
     notifyListeners();
   }
+
+
 }
