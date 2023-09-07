@@ -420,6 +420,8 @@ class _MainPageState extends State<MainPage> {
                               style: TextStyle(
                                   color: const Color(0xff61f7d5),
                                   fontSize: titles)),
+
+                          //Ingenieria en mecatronica CARD        
                           InfoCard(
                             title:
                                 "Mechatronics Engineering | Facultad de ingeniería | December 2016 - December 2021",
@@ -480,6 +482,8 @@ class _MainPageState extends State<MainPage> {
                           const SizedBox(
                             height: 10,
                           ),
+
+                          //Accenture bootcamp CARD
                           InfoCard(
                             title: "QE Bootcamp | Accenture | May 2022",
                             classification: "Bootcamp",
@@ -601,6 +605,8 @@ class _MainPageState extends State<MainPage> {
                           const SizedBox(
                             height: 10,
                           ),
+
+                          //ITK experience CARD
                           InfoCard(
                             title:
                                 "Software Engineering Certification Course | Instituto Tecnologico Ksquare | September 2022 - March 2023",
@@ -696,6 +702,27 @@ class _MainPageState extends State<MainPage> {
                               ],
                             ),
                           ),
+                          
+                          //1ero trader CARD
+
+                          InfoCard(
+                            title: "Scanner | 1ero Trader | June - July 2023", 
+                            classification: "Contract", 
+                            classificationColor: Colors.red, 
+                            childWidget: Center(
+                                  child: Image.network(
+                                    "https://i.imgur.com/OuYhgQW.jpg",
+                                   height: screenHeight * 1.5,/*
+                                    width: screenWidth * .65, */
+                                    fit: BoxFit.cover,
+                                  ),
+                                ), 
+                            index: 3, 
+                            section: 0, 
+                            expandableProvider: expandableProvider)
+
+
+
                         ]),
                       ),
                     ),
@@ -733,10 +760,13 @@ class _MainPageState extends State<MainPage> {
                               style: TextStyle(
                                   color: const Color(0xff53D8BA),
                                   fontSize: titles)),
+
+                          //Projecto de simon dice CARD        
                           InfoCard(
                             title: "Simon's Game",
                             classification: "video game",
                             classificationColor: const Color(0xffc53ace),
+                            //La seccion salta a la 2, por
                             section: 2,
                             index: 0,
                             expandableProvider: expandableProvider,
