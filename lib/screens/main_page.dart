@@ -8,10 +8,12 @@ import 'package:web_page/controllers/expandable_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 import 'package:web_page/custom_widgets/custom_appbar.dart';
+import 'package:web_page/custom_widgets/custom_appbar_mobile.dart';
 import 'package:web_page/custom_widgets/section1.dart';
 import 'package:web_page/custom_widgets/section2.dart';
 import 'package:web_page/custom_widgets/section3.dart';
 import 'package:web_page/custom_widgets/social.dart';
+import 'package:web_page/utils/responsive.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -108,7 +110,8 @@ class _MainPageState extends State<MainPage> {
                 slivers: <Widget>[
 
                   //APPBAR
-                  CustomAppbar(screenHeight: screenHeight, currentHeight: currentHeight, screenWidth: screenWidth, text: text, titles: titles, introductions: introductions, appbarProvider: appbarProvider, navbarWeight: navbarWeight, about: about, experience: experience, projects: projects, social: social, scrollController: scrollController),
+                  Responsive(mobile: CustomAppbarMobile(screenHeight: screenHeight, currentHeight: currentHeight, screenWidth: screenWidth, text: text, titles: titles, introductions: introductions, appbarProvider: appbarProvider, navbarWeight: navbarWeight, about: about, experience: experience, projects: projects, social: social, scrollController: scrollController), desktop: CustomAppbar(screenHeight: screenHeight, currentHeight: currentHeight, screenWidth: screenWidth, text: text, titles: titles, introductions: introductions, appbarProvider: appbarProvider, navbarWeight: navbarWeight, about: about, experience: experience, projects: projects, social: social, scrollController: scrollController))
+                  ,
 
                   //sections 1
                   Section1(about: about, screenHeight: screenHeight, screenWidth: screenWidth, text: text, titles: titles, introductions: introductions),
