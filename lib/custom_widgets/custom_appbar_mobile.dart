@@ -255,6 +255,7 @@ class _Section1State extends State<CustomAppbarMobile> {
             ],
           )
         :
+
         //Vertical
         SliverAppBar(
             pinned: true,
@@ -271,22 +272,22 @@ class _Section1State extends State<CustomAppbarMobile> {
                     Stack(children: <Widget>[
                       Positioned(
                         left: widget.screenWidth *
-                            .35 *
+                            .18 *
                             (widget.currentHeight / widget.screenHeight),
-                        top: widget.screenHeight *
-                            .05 *
+                        top: (widget.screenHeight*.0095)+(-1.2*(widget.screenHeight  /widget.currentHeight ))+widget.screenHeight *
+                            .25 *
                             (widget.currentHeight / widget.screenHeight),
                         child: ClipPath(
                             clipper: OvalClipper(),
                             child: Image.asset(
                               'images/profile.jpg',
-                              height: (widget.screenWidth /
+                              height: (widget.screenWidth*.07) +(widget.screenWidth /
                                       widget.screenHeight) *
-                                  200 *
+                                  450 *
                                   (widget.currentHeight / widget.screenHeight),
-                              width: (widget.screenWidth /
+                              width: (widget.screenWidth*.07) +(widget.screenWidth /
                                       widget.screenHeight) *
-                                  200 *
+                                  450 *
                                   (widget.currentHeight / widget.screenHeight),
                               fit: BoxFit.cover,
                             )),
@@ -294,31 +295,30 @@ class _Section1State extends State<CustomAppbarMobile> {
                     ]),
                     Stack(children: <Widget>[
                       Positioned(
-                          left: widget.screenWidth *
-                              .38 *
-                              (widget.currentHeight / widget.screenHeight),
-                          top: widget.screenHeight *
-                              .75 *
-                              (widget.currentHeight / widget.screenHeight),
+                          left: (widget.screenWidth*.14)+widget.screenWidth *
+                        .15 *
+                        (widget.currentHeight / widget.screenHeight),
+                          top: (-1.7*(widget.screenHeight  /widget.currentHeight ))+widget.screenHeight *
+                        .65 *
+                        (widget.currentHeight / widget.screenHeight),
                           child: Text(
                             'Daniel Bacab',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize:
                                     (widget.screenWidth / widget.screenHeight) *
-                                        (widget.currentHeight /
-                                            widget.screenHeight) *
-                                        30),
+                              (widget.currentHeight / widget.screenHeight) *
+                              25+(.025*widget.screenHeight)),
                           ))
                     ]),
                     Stack(children: <Widget>[
                       Positioned(
-                          left: widget.screenWidth *
-                              .4 *
-                              (widget.currentHeight / widget.screenHeight),
-                          top: widget.screenHeight *
-                              .87 *
-                              (widget.currentHeight / widget.screenHeight),
+                           left: (widget.screenWidth*.21)+widget.screenWidth *
+                        .17 *
+                        (widget.currentHeight / widget.screenHeight),
+                          top: (-1.7*(widget.screenHeight  /widget.currentHeight ))+widget.screenHeight *
+                        .73 *
+                        (widget.currentHeight / widget.screenHeight),
                           child: Text(
                             widget.appbarProvider.isExpanded
                                 ? 'Flutter Developer'
@@ -327,9 +327,8 @@ class _Section1State extends State<CustomAppbarMobile> {
                                 color: Colors.white,
                                 fontSize:
                                     (widget.screenWidth / widget.screenHeight) *
-                                        (widget.currentHeight /
-                                            widget.screenHeight) *
-                                        20),
+                              (widget.currentHeight / widget.screenHeight) *
+                              27),
                           ))
                     ]),
                   ],
@@ -337,121 +336,161 @@ class _Section1State extends State<CustomAppbarMobile> {
               },
             ),
             actions: [
-              InkWell(
-                onTap: () {
-                  widget.scrollController.position.ensureVisible(
-                      widget.about.currentContext!.findRenderObject()!,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut);
-                },
-                child: Row(
-                  children: [
-                    Text(
-                      "01. ",
-                      style: TextStyle(
-                          color: const Color(0xff61f7d5),
-                          fontSize: widget.screenHeight * .02,
-                          fontWeight: widget.navbarWeight),
-                    ),
-                    Text(
-                      "About",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: widget.screenHeight * .02,
-                          fontWeight: widget.navbarWeight),
-                    ),
-                    SizedBox(
-                      width: widget.screenWidth * .03,
-                    )
-                  ],
+              PopupMenuButton<int>(
+                color: Colors.black,
+                elevation: 10,
+                icon: const Icon(
+                  Icons.menu,
+                  color: Colors.white,
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  widget.scrollController.position.ensureVisible(
-                      widget.experience.currentContext!.findRenderObject()!,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut);
-                },
-                child: Row(
-                  children: [
-                    Text(
-                      "02. ",
-                      style: TextStyle(
-                          color: const Color(0xff61f7d5),
-                          fontSize: widget.screenHeight * .02,
-                          fontWeight: widget.navbarWeight),
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    value: 1,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: InkWell(
+                        onTap: () {
+                          widget.scrollController.position.ensureVisible(
+                              widget.about.currentContext!.findRenderObject()!,
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeInOut);
+                        },
+                        child: Row(
+                          children: [
+                            Text(
+                              "01. ",
+                              style: TextStyle(
+                                  color: const Color(0xff61f7d5),
+                                  fontSize: widget.screenHeight * .02,
+                                  fontWeight: widget.navbarWeight),
+                            ),
+                            Text(
+                              "About",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: widget.screenHeight * .02,
+                                  fontWeight: widget.navbarWeight),
+                            ),
+                            SizedBox(
+                              width: widget.screenWidth * .03,
+                            )
+                          ],
+                        ),
+                      ),
                     ),
-                    Text(
-                      "Experience",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: widget.screenHeight * .02,
-                          fontWeight: widget.navbarWeight),
+                  ),
+                  PopupMenuItem(
+                    value: 2,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: InkWell(
+                        onTap: () {
+                          widget.scrollController.position.ensureVisible(
+                              widget.experience.currentContext!
+                                  .findRenderObject()!,
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeInOut);
+                        },
+                        child: Row(
+                          children: [
+                            Text(
+                              "02. ",
+                              style: TextStyle(
+                                  color: const Color(0xff61f7d5),
+                                  fontSize: widget.screenHeight * .02,
+                                  fontWeight: widget.navbarWeight),
+                            ),
+                            Text(
+                              "Experience",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: widget.screenHeight * .02,
+                                  fontWeight: widget.navbarWeight),
+                            ),
+                            SizedBox(
+                              width: widget.screenWidth * .03,
+                            )
+                          ],
+                        ),
+                      ),
                     ),
-                    SizedBox(
-                      width: widget.screenWidth * .03,
-                    )
-                  ],
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  widget.scrollController.position.ensureVisible(
-                      widget.projects.currentContext!.findRenderObject()!,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut);
-                },
-                child: Row(
-                  children: [
-                    Text(
-                      "03. ",
-                      style: TextStyle(
-                          color: const Color(0xff61f7d5),
-                          fontSize: widget.screenHeight * .02,
-                          fontWeight: widget.navbarWeight),
+                  ),
+                  PopupMenuItem(
+                    value: 3,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: InkWell(
+                        onTap: () {
+                          widget.scrollController.position.ensureVisible(
+                              widget.projects.currentContext!
+                                  .findRenderObject()!,
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeInOut);
+                        },
+                        child: Row(
+                          children: [
+                            Text(
+                              "03. ",
+                              style: TextStyle(
+                                  color: const Color(0xff61f7d5),
+                                  fontSize: widget.screenHeight * .02,
+                                  fontWeight: widget.navbarWeight),
+                            ),
+                            Text(
+                              "Projects",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: widget.screenHeight * .02,
+                                  fontWeight: widget.navbarWeight),
+                            ),
+                            SizedBox(
+                              width: widget.screenWidth * .03,
+                            )
+                          ],
+                        ),
+                      ),
                     ),
-                    Text(
-                      "Projects",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: widget.screenHeight * .02,
-                          fontWeight: widget.navbarWeight),
+                  ),
+                  PopupMenuItem(
+                    value: 4,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: InkWell(
+                        onTap: () {
+                          widget.scrollController.position.ensureVisible(
+                              widget.social.currentContext!.findRenderObject()!,
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeInOut);
+                        },
+                        child: Row(
+                          children: [
+                            Text(
+                              "04. ",
+                              style: TextStyle(
+                                  color: const Color(0xff61f7d5),
+                                  fontSize: widget.screenHeight * .02,
+                                  fontWeight: widget.navbarWeight),
+                            ),
+                            Text(
+                              "Social",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: widget.screenHeight * .02,
+                                  fontWeight: widget.navbarWeight),
+                            ),
+                            SizedBox(
+                              width: widget.screenWidth * .03,
+                            )
+                          ],
+                        ),
+                      ),
                     ),
-                    SizedBox(
-                      width: widget.screenWidth * .03,
-                    )
-                  ],
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  widget.scrollController.position.ensureVisible(
-                      widget.social.currentContext!.findRenderObject()!,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut);
-                },
-                child: Row(
-                  children: [
-                    Text(
-                      "04. ",
-                      style: TextStyle(
-                          color: const Color(0xff61f7d5),
-                          fontSize: widget.screenHeight * .02,
-                          fontWeight: widget.navbarWeight),
-                    ),
-                    Text(
-                      "Social",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: widget.screenHeight * .02,
-                          fontWeight: widget.navbarWeight),
-                    ),
-                    SizedBox(
-                      width: widget.screenWidth * .03,
-                    )
-                  ],
-                ),
+                  ),
+                ],
+                /* onSelected: (value) {
+                // Aquí puedes manejar la selección de la opción
+                print('Opción seleccionada: $value');
+              } */
               ),
             ],
           );

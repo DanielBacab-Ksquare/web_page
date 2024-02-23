@@ -91,7 +91,7 @@ class _MainPageState extends State<MainPage> {
     FontWeight navbarWeight = FontWeight.w800;
 
     //Determinate if it's protraid and mobile by dimensions
-    bool isportraid = screenHeight > screenWidth;
+    //bool isportraid = screenHeight > screenWidth;
     bool isMobile = screenWidth < 850;
 
     expandableProvider.changeIsMobile(isMobile);
