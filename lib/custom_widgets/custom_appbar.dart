@@ -58,7 +58,7 @@ class _Section1State extends State<CustomAppbar> {
                   left: widget.screenWidth *
                       .35 *
                       (widget.currentHeight / widget.screenHeight),
-                  top: widget.screenHeight *
+                  top: (widget.screenHeight*.01)+widget.screenHeight *
                       .05 *
                       (widget.currentHeight / widget.screenHeight),
                   child: ClipPath(
@@ -66,10 +66,10 @@ class _Section1State extends State<CustomAppbar> {
                       child: Image.asset(
                         'images/profile.jpg',
                         height: (widget.screenWidth / widget.screenHeight) *
-                            200 *
+                            190 *
                             (widget.currentHeight / widget.screenHeight),
                         width: (widget.screenWidth / widget.screenHeight) *
-                            200 *
+                            190 *
                             (widget.currentHeight / widget.screenHeight),
                         fit: BoxFit.cover,
                       )),
@@ -77,10 +77,10 @@ class _Section1State extends State<CustomAppbar> {
               ]),
               Stack(children: <Widget>[
                 Positioned(
-                    left: widget.screenWidth *
-                        .38 *
+                    left: (widget.screenWidth*.06)+widget.screenWidth *
+                        .3 *
                         (widget.currentHeight / widget.screenHeight),
-                    top: widget.screenHeight *
+                    top: (-2.5*(widget.screenHeight  /widget.currentHeight ))+widget.screenHeight *
                         .75 *
                         (widget.currentHeight / widget.screenHeight),
                     child: Text(
@@ -89,15 +89,15 @@ class _Section1State extends State<CustomAppbar> {
                           color: Colors.white,
                           fontSize: (widget.screenWidth / widget.screenHeight) *
                               (widget.currentHeight / widget.screenHeight) *
-                              30),
+                              25+(.025*widget.screenHeight)),
                     ))
               ]),
               Stack(children: <Widget>[
                 Positioned(
-                    left: widget.screenWidth *
-                        .4 *
+                    left: (widget.screenWidth*.09)+widget.screenWidth *
+                        .3 *
                         (widget.currentHeight / widget.screenHeight),
-                    top: widget.screenHeight *
+                    top: (-2.5*(widget.screenHeight  /widget.currentHeight ))+widget.screenHeight *
                         .87 *
                         (widget.currentHeight / widget.screenHeight),
                     child: Text(

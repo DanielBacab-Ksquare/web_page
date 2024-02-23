@@ -301,7 +301,7 @@ class _Section1State extends State<CustomAppbarMobile> {
                               .75 *
                               (widget.currentHeight / widget.screenHeight),
                           child: Text(
-                            'Daniel Bacab in MOBILE 2',
+                            'Daniel Bacab',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize:
