@@ -32,10 +32,13 @@ class Section3 extends StatefulWidget {
 class _Section1State extends State<Section3> {
   @override
   Widget build(BuildContext context) {
+    double sectionBaseHeight =
+        widget.screenHeight > 450 ? widget.screenHeight : 450;
+
     return SliverToBoxAdapter(
                     key: widget.projects,
                     child: Container(
-                      height: widget.screenHeight +
+                      height: sectionBaseHeight +
                           widget.expandableProvider.currentSection2Offset,
                       decoration: const BoxDecoration(
                        color: Color(0xff0b192f),

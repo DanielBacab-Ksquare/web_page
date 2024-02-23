@@ -29,9 +29,9 @@ class Section2 extends StatefulWidget {
 class _Section1State extends State<Section2> {
   @override
   Widget build(BuildContext context) {
-    print("hey it's: ${widget.screenHeight}");
+   
     double sectionBaseHeight =
-        widget.screenHeight > 600 ? widget.screenHeight : 600;
+        widget.screenHeight > 500 ? widget.screenHeight : 500;
 
     return SliverToBoxAdapter(
       key: widget.experience,
