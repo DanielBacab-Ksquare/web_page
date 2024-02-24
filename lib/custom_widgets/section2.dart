@@ -29,7 +29,8 @@ class Section2 extends StatefulWidget {
 class _Section1State extends State<Section2> {
   @override
   Widget build(BuildContext context) {
-   
+    bool isMobileVertical = widget.screenHeight > widget.screenWidth;
+
     double sectionBaseHeight =
         widget.screenHeight > 500 ? widget.screenHeight : 500;
 
@@ -42,8 +43,8 @@ class _Section1State extends State<Section2> {
               image: AssetImage('images/back1.jpg'),
               fit: BoxFit.cover,
             )),
-        height: sectionBaseHeight +
-            widget.expandableProvider.currentSection1Offset,
+        height:
+            sectionBaseHeight + widget.expandableProvider.currentSection1Offset,
         child: Padding(
           padding: EdgeInsets.symmetric(
               horizontal: widget.screenWidth * .1,
@@ -307,7 +308,7 @@ class _Section1State extends State<Section2> {
                   Center(
                     child: Image.network(
                       "https://i.imgur.com/gNGMPR0.jpg",
-                      height: widget.screenHeight * 1.2,
+                      height: isMobileVertical?(widget.screenHeight * .27):(widget.screenHeight * 1.2),
                       width: widget.screenWidth * .65,
                       fit: BoxFit.cover,
                     ),
@@ -325,7 +326,7 @@ class _Section1State extends State<Section2> {
                 childWidget: Center(
                   child: Image.network(
                     "https://i.imgur.com/OuYhgQW.jpg",
-                    height: widget.screenHeight * 1.5,
+                    height: isMobileVertical?(widget.screenHeight * 0.45):(widget.screenHeight * 1.5),
                     /*
                                     width: screenWidth * .65, */
                     fit: BoxFit.cover,

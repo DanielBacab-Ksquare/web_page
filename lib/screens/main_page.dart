@@ -83,18 +83,20 @@ class _MainPageState extends State<MainPage> {
 
     appbarProvider.colorOffset = ((screenWidth / screenHeight) * 70).round();
 
-    //text sizes
-    double titles = screenHeight * 0.2;
-    double introductions = screenHeight * .07;
-    double text = screenHeight * .04;
-
-    FontWeight navbarWeight = FontWeight.w800;
-
     //Determinate if it's protraid and mobile by dimensions
-    //bool isportraid = screenHeight > screenWidth;
+    bool isportraid = screenHeight > screenWidth;
     bool isMobile = screenWidth < 850;
 
+    bool isPortraitMobile = isMobile && isportraid;
+
     expandableProvider.changeIsMobile(isMobile);
+
+    //text sizes
+    double titles = isPortraitMobile?(screenHeight * 0.08):(screenHeight * 0.2);
+    double introductions = isPortraitMobile?(screenHeight *.05):(screenHeight *.07);
+    double text = isPortraitMobile?(screenHeight * .025):(screenHeight * .04);
+
+    FontWeight navbarWeight = FontWeight.w800;
 
     return SafeArea(
       child: WebSmoothScroll(
