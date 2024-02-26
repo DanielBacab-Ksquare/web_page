@@ -113,6 +113,6 @@ _openURL(url) async {
   if (await launchUrl(url)) {
     await canLaunchUrl(url);
   } else {
-    print("Error");
+    //print("Error");
   }
 }

@@ -32,6 +32,10 @@ class Section3 extends StatefulWidget {
 class _Section1State extends State<Section3> {
   @override
   Widget build(BuildContext context) {
+   /*  bool isMobileVertical = widget.screenHeight > widget.screenWidth;
+ */
+   /*  double clickHereSize = isMobileVertical?(screenHeight * .025):(screenHeight * .04); */
+
     double sectionBaseHeight =
         widget.screenHeight > 450 ? widget.screenHeight : 450;
 
@@ -85,7 +89,7 @@ class _Section1State extends State<Section3> {
                                       RichText(
                                         text: TextSpan(
                                           text:
-                                              ' Click here to see the repository',
+                                              'Click here to\nsee the repository',
                                           style: TextStyle(
                                               color: Colors.white,
                                               decoration:
@@ -152,7 +156,7 @@ class _Section1State extends State<Section3> {
                                       RichText(
                                         text: TextSpan(
                                           text:
-                                              'Click here to see the repository',
+                                              'Click here to\nsee the repository',
                                           style: TextStyle(
                                               color: Colors.white,
                                               decoration:
@@ -207,9 +211,10 @@ class _Section1State extends State<Section3> {
                                   '''
                                          html,
                                           webView: true,
-                                          <iframe src="https://drive.google.com/file/d/16xHHJplDXtEJKLT12L3y3RbSe53wNJ-e/preview?usp=share_link" width="640" height="480" scrolling="yes" overflow: scroll></iframe>
-                                          <iframe src="https://drive.google.com/file/d/1RYQSl9DKgU8xshWQ71fn4U-1CXlPZNXS/preview?usp=share_link" width="640" height="480"></iframe>
+                                          <iframe src="https://drive.google.com/file/d/16xHHJplDXtEJKLT12L3y3RbSe53wNJ-e/preview?usp=share_link" width="640" height="480" ></iframe>
+                                          <iframe src="https://drive.google.com/file/d/1RYQSl9DKgU8xshWQ71fn4U-1CXlPZNXS/preview?usp=share_link" width="640" height="480" ></iframe>
                                           ''',
+                                          
                                 ),
                               ),
                               InkWell(
@@ -226,7 +231,7 @@ class _Section1State extends State<Section3> {
                                     RichText(
                                       text: TextSpan(
                                         text:
-                                            'Click here to see the repository',
+                                            'Click here to\nsee the repository',
                                         style: TextStyle(
                                             color: Colors.white,
                                             decoration:
