@@ -120,10 +120,7 @@ class _Section1State extends State<CustomAppbar> {
                 Positioned(
                     left: -((1 - (widget.currentHeight / widget.screenHeight)) *
                         (widget.screenWidth /
-                            2.25)) /* (widget.screenWidth * .06) +
-                        widget.screenWidth *
-                            .3 *
-                            (widget.currentHeight / widget.screenHeight) */
+                            2.25))
                     ,
                     top: exp(8 *
                             ((widget.currentHeight / widget.screenHeight) -
@@ -145,23 +142,28 @@ class _Section1State extends State<CustomAppbar> {
               ]),
               Stack(children: <Widget>[
                 Positioned(
-                    left: (widget.screenWidth * .09) +
-                        widget.screenWidth *
-                            .3 *
-                            (widget.currentHeight / widget.screenHeight),
-                    top:  (-2.5 * (widget.screenHeight / widget.currentHeight)) +
-                        widget.screenHeight *
-                            .87 *
-                            (widget.currentHeight / widget.screenHeight) ,
-                    child: Text(
-                      widget.appbarProvider.isExpanded
-                          ? 'Flutter Developer'
-                          : '',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: (widget.screenWidth / widget.screenHeight) *
-                              (widget.currentHeight / widget.screenHeight) *
-                              20),
+                      left: -((1 - (widget.currentHeight / widget.screenHeight)) *
+                        (widget.screenWidth /
+                            2.25))
+                    ,
+                    top: exp(2 *
+                            ((widget.currentHeight / widget.screenHeight) -
+                                1)) *
+                        (widget.screenHeight * .40) ,
+                    child: SizedBox(
+                       width: widget.screenWidth,
+                      height: widget.currentHeight,
+                      child: Center(
+                        child: Text(
+                          widget.appbarProvider.isExpanded
+                              ? 'Flutter Developer'
+                              : '',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: widget.currentHeight * .03 +
+                                  widget.screenHeight * .005),
+                        ),
+                      ),
                     ))
               ]),
             ],
