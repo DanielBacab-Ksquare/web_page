@@ -59,6 +59,7 @@ class _InfoCardState extends State<InfoCard> {
   @override
   Widget build(BuildContext context) {
      double screenWidth = MediaQuery.of(context).size.width;
+     double  screenHeight = MediaQuery.of(context).size.height;
     Color mainColor = const Color(0xff2f6d91);
 
     return ExpandableNotifier(
@@ -86,7 +87,7 @@ class _InfoCardState extends State<InfoCard> {
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                   child: Text(widget.title,
                       style: TextStyle(
-                        fontSize: screenWidth *.05,
+                        fontSize: (screenWidth* screenHeight *.00002>16)?screenWidth* screenHeight *.00002:14,
                         color: Colors.white,
                       ))),
               collapsed: const SizedBox(),
