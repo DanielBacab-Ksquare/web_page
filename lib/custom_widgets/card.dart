@@ -53,14 +53,12 @@ class _InfoCardState extends State<InfoCard> {
       //Se llama a la funcion del provider para que se haga un nuevo calculo de todo
       widget.expandableProvider.calculate1();
 
-      setState(() {
-        print("Obtengo esto: ${widget.expandableProvider.currentSection1Offset}");
-      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
+     double screenWidth = MediaQuery.of(context).size.width;
     Color mainColor = const Color(0xff2f6d91);
 
     return ExpandableNotifier(
@@ -87,8 +85,8 @@ class _InfoCardState extends State<InfoCard> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                   child: Text(widget.title,
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        fontSize: screenWidth *.05,
                         color: Colors.white,
                       ))),
               collapsed: const SizedBox(),

@@ -94,9 +94,9 @@ class _MainPageState extends State<MainPage> {
     expandableProvider.changeIsMobile(isMobile);
 
     //text sizes
-    double titles = isPortraitMobile?(screenHeight * 0.08):(screenHeight * 0.2);
-    double introductions = isPortraitMobile?(screenHeight *.05):(screenHeight *.07);
-    double text = isPortraitMobile?(screenHeight * .025):(screenHeight * .04);
+    double titles = isPortraitMobile?(screenWidth * 0.15):(screenWidth * 0.2);
+    double introductions = isPortraitMobile?(screenWidth *.05):(screenHeight *.07);
+    double text = isPortraitMobile?(screenWidth * .05):(screenHeight * .04);
 
     FontWeight navbarWeight = FontWeight.w800;
 
