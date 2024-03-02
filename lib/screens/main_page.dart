@@ -72,10 +72,12 @@ class _MainPageState extends State<MainPage> {
         appbarProvider.isExpanded = false;
       }
     });
+   
   }
 
   @override
   Widget build(BuildContext context) {
+      
     appbarProvider = Provider.of<AppbarProvider>(context);
     expandableProvider = Provider.of<ExpandableProvider>(context);
     screenHeight = MediaQuery.of(context).size.height;

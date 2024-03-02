@@ -39,47 +39,11 @@ class CustomAppbar extends StatefulWidget {
 }
 
 class _Section1State extends State<CustomAppbar> {
-/*   double _textWidth = 0.0;
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
-      // This callback runs after the widget is rendered on screen
-      calculateTextWidth();
-    });
-  }
-
-  void calculateTextWidth() {
-    final textSpan = TextSpan(
-        text: 'Daniel Bacab',
-        style: TextStyle(
-            fontSize: widget.currentHeight *
-                .2)); // Replace 'Hello World' with your text
-    final textPainter = TextPainter(
-      text: textSpan,
-      textDirection: TextDirection.ltr,
-    );
-
-    textPainter
-        .layout(); // This will calculate the width and height of the text
-    setState(() {
-      _textWidth = textPainter.width;
-     
-    });
-  }
-
-  @override
-  void didUpdateWidget(covariant CustomAppbar oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.currentHeight != widget.currentHeight) {
-      calculateTextWidth();
-       print("Tenemos: ${ widget.currentHeight}");
-    }
-  } */
 
   @override
   Widget build(BuildContext context) {
+      
     return SliverAppBar(
       pinned: true,
       backgroundColor: widget.appbarProvider.sliverAppBarColor,
@@ -89,11 +53,7 @@ class _Section1State extends State<CustomAppbar> {
           widget.currentHeight = constraints.maxHeight;
 
           widget.appbarProvider.currentHeight = constraints.maxHeight;
-          print(
-              "Tengo ${exp(8 *
-                            ((widget.currentHeight / widget.screenHeight) -
-                                1)) *
-                        (widget.screenHeight * .35)}");
+        
           return Stack(
             children: [
               Stack(children: <Widget>[
@@ -140,7 +100,7 @@ class _Section1State extends State<CustomAppbar> {
                       ),
                     ))
               ]),
-              Stack(children: <Widget>[
+              widget.appbarProvider.isExpanded?Stack(children: <Widget>[
                 Positioned(
                       left: -((1 - (widget.currentHeight / widget.screenHeight)) *
                         (widget.screenWidth /
@@ -154,10 +114,7 @@ class _Section1State extends State<CustomAppbar> {
                        width: widget.screenWidth,
                       height: widget.currentHeight,
                       child: Center(
-                        child: Text(
-                          widget.appbarProvider.isExpanded
-                              ? 'Flutter Developer'
-                              : '',
+                        child: Text('Flutter Developer',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: widget.currentHeight * .03 +
@@ -165,7 +122,7 @@ class _Section1State extends State<CustomAppbar> {
                         ),
                       ),
                     ))
-              ]),
+              ]):const SizedBox(),
             ],
           );
         },

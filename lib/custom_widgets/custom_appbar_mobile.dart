@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_page/controllers/appbar_provider.dart';
+import 'dart:math';
 
 // ignore: must_be_immutable
 class CustomAppbarMobile extends StatefulWidget {
@@ -38,12 +39,15 @@ class CustomAppbarMobile extends StatefulWidget {
 }
 
 class _Section1State extends State<CustomAppbarMobile> {
+  
   @override
   Widget build(BuildContext context) {
+  
     bool isHorizontal = widget.screenWidth > widget.screenHeight;
 
     double sectionNavOptionsHorizontal = .05;
     double interSeparationOptions = .03;
+
 
     //Horizontal
     return isHorizontal
@@ -53,6 +57,7 @@ class _Section1State extends State<CustomAppbarMobile> {
             expandedHeight: widget.screenHeight,
             flexibleSpace: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
+               
                 widget.currentHeight = constraints.maxHeight;
 
                 widget.appbarProvider.currentHeight = constraints.maxHeight;
@@ -102,7 +107,7 @@ class _Section1State extends State<CustomAppbarMobile> {
                                         25),
                           ))
                     ]),
-                    Stack(children: <Widget>[
+                    widget.appbarProvider.isExpanded?Stack(children: <Widget>[
                       Positioned(
                           left: widget.screenWidth *
                               .6 *
@@ -110,10 +115,7 @@ class _Section1State extends State<CustomAppbarMobile> {
                           top: widget.screenHeight *
                               .55 *
                               (widget.currentHeight / widget.screenHeight),
-                          child: Text(
-                            widget.appbarProvider.isExpanded
-                                ? 'Flutter Developer'
-                                : '',
+                          child: Text('Flutter Developer',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize:
@@ -122,7 +124,7 @@ class _Section1State extends State<CustomAppbarMobile> {
                                             widget.screenHeight) *
                                         10),
                           ))
-                    ]),
+                    ]):const SizedBox(),
                   ],
                 );
               },
@@ -271,66 +273,77 @@ class _Section1State extends State<CustomAppbarMobile> {
                   children: [
                     Stack(children: <Widget>[
                       Positioned(
-                        left: widget.screenWidth *
-                            .18 *
-                            (widget.currentHeight / widget.screenHeight),
-                        top: (widget.screenHeight*.0095)+(-1.2*(widget.screenHeight  /widget.currentHeight ))+widget.screenHeight *
-                            .25 *
-                            (widget.currentHeight / widget.screenHeight),
-                        child: ClipPath(
-                            clipper: OvalClipper(),
-                            child: Image.asset(
-                              'images/profile.jpg',
-                              height: (widget.screenWidth*.07) +(widget.screenWidth /
-                                      widget.screenHeight) *
-                                  450 *
-                                  (widget.currentHeight / widget.screenHeight),
-                              width: (widget.screenWidth*.07) +(widget.screenWidth /
-                                      widget.screenHeight) *
-                                  450 *
-                                  (widget.currentHeight / widget.screenHeight),
-                              fit: BoxFit.cover,
-                            )),
+                        left: -((1 -
+                                (widget.currentHeight / widget.screenHeight)) *
+                            (widget.screenWidth / 2.25)),
+                        child: SizedBox(
+                          width: widget.screenWidth,
+                          height: widget.currentHeight,
+                          child: Center(
+                            child: ClipPath(
+                                clipper: OvalClipper(),
+                                child: Image.asset(
+                                  'images/profile.jpg',
+                                  height: widget.currentHeight * .2 +
+                                      widget.screenHeight * .02,
+                                  width: widget.currentHeight * .2 +
+                                      widget.screenHeight * .02,
+                                  fit: BoxFit.cover,
+                                )),
+                          ),
+                        ),
                       ),
                     ]),
                     Stack(children: <Widget>[
                       Positioned(
-                          left: (widget.screenWidth*.14)+widget.screenWidth *
-                        .15 *
-                        (widget.currentHeight / widget.screenHeight),
-                          top: (-1.7*(widget.screenHeight  /widget.currentHeight ))+widget.screenHeight *
-                        .65 *
-                        (widget.currentHeight / widget.screenHeight),
-                          child: Text(
-                            'Daniel Bacab',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize:
-                                    (widget.screenWidth / widget.screenHeight) *
-                              (widget.currentHeight / widget.screenHeight) *
-                              25+(.025*widget.screenHeight)),
+                          left: -((1 -
+                                  (widget.currentHeight /
+                                      widget.screenHeight)) *
+                              (widget.screenWidth / 3.35)),
+                          top: exp(16 *
+                                  ((widget.currentHeight /
+                                          widget.screenHeight) -
+                                      1)) *
+                              (widget.screenHeight * .17),
+                          child: SizedBox(
+                            width: widget.screenWidth,
+                            height: widget.currentHeight,
+                            child: Center(
+                              child: Text(
+                                'Daniel Bacab',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: widget.currentHeight * .05 +
+                                        widget.screenHeight * .01),
+                              ),
+                            ),
                           ))
                     ]),
-                    Stack(children: <Widget>[
+                    widget.appbarProvider.isExpanded?Stack(children: <Widget>[
                       Positioned(
-                           left: (widget.screenWidth*.21)+widget.screenWidth *
-                        .17 *
-                        (widget.currentHeight / widget.screenHeight),
-                          top: (-1.7*(widget.screenHeight  /widget.currentHeight ))+widget.screenHeight *
-                        .73 *
-                        (widget.currentHeight / widget.screenHeight),
-                          child: Text(
-                            widget.appbarProvider.isExpanded
-                                ? 'Flutter Developer'
-                                : '',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize:
-                                    (widget.screenWidth / widget.screenHeight) *
-                              (widget.currentHeight / widget.screenHeight) *
-                              27),
+                          left: -((1 -
+                                  (widget.currentHeight /
+                                      widget.screenHeight)) *
+                              (widget.screenWidth / 3.2)),
+                          top: exp(8 *
+                                  ((widget.currentHeight /
+                                          widget.screenHeight) -
+                                      1)) *
+                              (widget.screenHeight * .26),
+                          child: SizedBox(
+                            width: widget.screenWidth,
+                           height: widget.currentHeight,
+                            child: Center(
+                              child: Text('Flutter Developer',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize:
+                                       widget.currentHeight * .02 +
+                                      widget.screenHeight * .005),
+                              ),
+                            ),
                           ))
-                    ]),
+                    ]):const SizedBox(),
                   ],
                 );
               },
@@ -487,10 +500,7 @@ class _Section1State extends State<CustomAppbarMobile> {
                     ),
                   ),
                 ],
-                /* onSelected: (value) {
-                // Aquí puedes manejar la selección de la opción
-                print('Opción seleccionada: $value');
-              } */
+                
               ),
             ],
           );
