@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:web_page/custom_widgets/card.dart';
 import 'package:web_page/controllers/expandable_provider.dart';
 
+
 // ignore: must_be_immutable
 class Section2 extends StatefulWidget {
   final GlobalKey experience;
@@ -52,7 +53,10 @@ class _Section1State extends State<Section2> {
           child: Column(children: [
             Text("Experience",
                 style: TextStyle(
-                    color: const Color(0xff61f7d5), fontSize: widget.titles)),
+                  color: const Color(0xff61f7d5), fontSize: widget.titles),
+                overflow: TextOverflow.fade,
+                    )
+                    ,
 
             //Ingenieria en mecatronica CARD
             InfoCard(
@@ -308,9 +312,9 @@ class _Section1State extends State<Section2> {
                   Center(
                     child: Image.network(
                       "https://i.imgur.com/gNGMPR0.jpg",
-                      height: isMobileVertical?(widget.screenHeight * .27):(widget.screenHeight * 1.2),
+                     height: isMobileVertical?(widget.screenHeight * .27):(widget.screenHeight * 1.2), 
                       width: widget.screenWidth * .65,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ],
@@ -329,7 +333,7 @@ class _Section1State extends State<Section2> {
                     height: isMobileVertical?(widget.screenHeight * 0.45):(widget.screenHeight * 1.5),
                     /*
                                     width: screenWidth * .65, */
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
                 ),
                 index: 3,

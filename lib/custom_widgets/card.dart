@@ -33,7 +33,7 @@ class _InfoCardState extends State<InfoCard> {
   late ExpandableController expandableController;
 
   @override
-  void initState() {
+  void initState()  {
     int plus1 = widget.section + 1;
     super.initState();
 
@@ -41,10 +41,11 @@ class _InfoCardState extends State<InfoCard> {
         initialExpanded: widget.expandableProvider.sections[widget.section]
             [widget.index]);
 
-    expandableController.addListener(() {
+    expandableController.addListener(()  {
+ 
       //aqui se accede al boleano del "sections" del "expandableProvider"
       widget.expandableProvider.sections[widget.section][widget.index] =
-          expandableController.expanded;
+           expandableController.expanded;
 
       //Aqui se accede a la altura correspondiente en "sections" solo sumando el primer indice un 1 "plus1" que seria el section + 1, el cual debe ser simetrico en el provider (tener 2 vectores del mismo tamaño consecutivos);
       widget.expandableProvider.sections[plus1][widget.index] =
@@ -52,6 +53,11 @@ class _InfoCardState extends State<InfoCard> {
 
       //Se llama a la funcion del provider para que se haga un nuevo calculo de todo
       widget.expandableProvider.calculate1();
+
+    
+   /*    setState(() {
+        
+      }); */
 
     });
   }

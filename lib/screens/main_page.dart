@@ -94,7 +94,7 @@ class _MainPageState extends State<MainPage> {
     expandableProvider.changeIsMobile(isMobile);
 
     //text sizes
-    double titles = isPortraitMobile?(screenWidth * 0.1):(screenHeight * 0.15);
+    double titles = isPortraitMobile?(screenWidth * 0.1):(screenHeight * 0.1);
     double introductions = isPortraitMobile?(screenWidth *.05):(screenHeight *.07);
     double text = isPortraitMobile?(screenWidth * .05):(screenHeight * .03);
 

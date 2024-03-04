@@ -32,8 +32,8 @@ class Section3 extends StatefulWidget {
 class _Section1State extends State<Section3> {
   @override
   Widget build(BuildContext context) {
-   /*  bool isMobileVertical = widget.screenHeight > widget.screenWidth;
- */
+   bool isMobileVertical = widget.screenHeight > widget.screenWidth;
+ 
    /*  double clickHereSize = isMobileVertical?(screenHeight * .025):(screenHeight * .04); */
 
     double sectionBaseHeight =
@@ -74,7 +74,10 @@ class _Section1State extends State<Section3> {
                             childWidget: Column(
                               children: [
                                 Image.network(
-                                    "https://i.imgur.com/obo8VbM.png"),
+                                    "https://i.imgur.com/obo8VbM.png",
+                                    height: isMobileVertical?widget.screenHeight*.2:widget.screenHeight*.6,
+                                    fit: BoxFit.contain,
+                                    ),
                                 InkWell(
                                   onTap: () {
                                     _openURL(
@@ -141,6 +144,8 @@ class _Section1State extends State<Section3> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.network(
+                                   height: isMobileVertical?widget.screenHeight*.2:widget.screenHeight*.6,
+                                    fit: BoxFit.contain,
                                     "https://i.imgur.com/P0uxGY8.png"),
                                 InkWell(
                                   onTap: () {

@@ -27,8 +27,8 @@ class ExpandableProvider extends ChangeNotifier {
         (sections[0][3] ? sections[1][3] : 0.0);
 
     //Estos valores de 612.0 y 609.0 son solo para pc, para mobil queda grande. Esto queda pendienteq
-    currentSection2Offset = (sections[2][0] ? (isMobile?412.0:612.0) : 0.0) +
-        (sections[2][1] ? (isMobile?409.0:609.0) : 0.0) +
+    currentSection2Offset = (sections[2][0] ? sections[3][0] : 0.0) +
+        (sections[2][1] ? sections[3][1] : 0.0) +
         (sections[2][2] ? sections[3][2] : 0.0) +
         (sections[2][3] ? sections[3][3] : 0.0);
 

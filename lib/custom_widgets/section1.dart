@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
 // ignore: must_be_immutable
 class Section1 extends StatefulWidget {
   final GlobalKey about;
@@ -68,6 +69,7 @@ class _Section1State extends State<Section1> {
               Text("Daniel Bacab.",
                   style:
                       TextStyle(color: Colors.white, fontSize: widget.titles)),
+                      const SizedBox(height: 10,),
               SizedBox(
                 width: isMobileVertical?(widget.screenWidth * .8):(widget.screenWidth * .5),
                 child: RichText(
